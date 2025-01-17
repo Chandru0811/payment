@@ -5,12 +5,16 @@ import WebSocketService from "../config/WebSocketService";
 
 const PaymentBuffer = () => {
   useEffect(() => {
-    const subscription = WebSocketService.subscribeToPaymentUpdates((data) => {
+    // Instantiate the WebSocketService class with 'new'
+    const websocketService = new WebSocketService();
+
+    const subscription = websocketService.subscribeToPaymentUpdates((data) => {
       console.log("subscription", data);
       if (data === true) {
         alert("Hii");
       }
     });
+
     return subscription;
   }, []);
   return (
