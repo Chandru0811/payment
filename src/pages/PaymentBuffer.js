@@ -5,7 +5,7 @@ import WebSocketService from "../config/WebSocketService";
 
 const PaymentBuffer = () => {
   useEffect(() => {
-    const subscription = WebSocketService.subscribeToLeadUpdates((data) => {
+    const subscription = WebSocketService.subscribeToPaymentUpdates((data) => {
       console.log("subscription", data);
       if (data === true) {
         alert("Hii");

@@ -20,7 +20,7 @@ class WebSocketService {
     });
   }
 
-  subscribeToLeadUpdates(callback) {
+  subscribeToPaymentUpdates(callback) {
     if (!this.connected) {
       console.error("STOMP connection not established");
       return;
