@@ -2,10 +2,17 @@ import Processing from "../assets/Spinner.png";
 import { IoMdLock } from "react-icons/io";
 import { useEffect } from "react";
 import WebSocketService from "../config/WebSocketService";
+import { useLocation } from "react-router-dom";
 
 const PaymentBuffer = () => {
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+
+  const OrderId = queryParams.get("OrderId");
+  console.log(OrderId);
+
   useEffect(() => {
-    // Instantiate the WebSocketService class with 'new'
     const websocketService = new WebSocketService();
 
     const subscription = websocketService.subscribeToPaymentUpdates((data) => {
@@ -17,6 +24,7 @@ const PaymentBuffer = () => {
 
     return subscription;
   }, []);
+  
   return (
     <div className="container py-2">
       <div
